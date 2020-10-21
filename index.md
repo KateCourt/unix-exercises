@@ -1,5 +1,5 @@
 # Episode 2
-
+test
 ## Exploring More `ls` Flags
 
 You can also use two options at the same time. What does the command `ls` do when used
