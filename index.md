@@ -40,15 +40,23 @@ Starting from `/Users/amanda/data`, which of the following commands could Amanda
 
 <details>
 <summary>Solution
-1. No: `.` stands for the current directory.
 </summary>
+1. No: `.` stands for the current directory.
+
 2. No: `/` stands for the root directory.
+
 3. No: Amanda's home directory is `/Users/amanda`.
+
 4. No: this goes up two levels, i.e. ends in `/Users`.
+
 5. Yes: `~` stands for the user's home directory, in this case `/Users/amanda`.
+
 6. No: this would navigate into a directory `home` in the current directory if it exists.
+
 7. Yes: unnecessarily complicated, but correct.
+
 8. Yes: shortcut to go back to the user's home directory.
+
 9. Yes: goes up one level.
 </details>
 
@@ -172,7 +180,7 @@ $ mv sucrose.dat maltose.dat ../raw
 </details>
 
 
- ## 3.3 Renaming Files>
+ ## 3.3 Renaming Files
  Suppose that you created a plain-text file in your current directory to contain a list of the
  statistical tests you will need to do to analyze your data, and named it: `statstics.txt`
 
@@ -313,111 +321,11 @@ Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all t
 <details>
 <summary>Solution
 </summary>
-  3
+  3.
 </details>
 
- ## 3.8 More on Wildcards
 
- Sam has a directory containing calibration data, datasets, and descriptions of
- the datasets:
-
- ~~~
- .
- ├── 2015-10-23-calibration.txt
- ├── 2015-10-23-dataset1.txt
- ├── 2015-10-23-dataset2.txt
- ├── 2015-10-23-dataset_overview.txt
- ├── 2015-10-26-calibration.txt
- ├── 2015-10-26-dataset1.txt
- ├── 2015-10-26-dataset2.txt
- ├── 2015-10-26-dataset_overview.txt
- ├── 2015-11-23-calibration.txt
- ├── 2015-11-23-dataset1.txt
- ├── 2015-11-23-dataset2.txt
- ├── 2015-11-23-dataset_overview.txt
- ├── backup
- │   ├── calibration
- │   └── datasets
- └── send_to_bob
-     ├── all_datasets_created_on_a_23rd
-     └── all_november_files
- ~~~
-
-
- Before heading off to another field trip, she wants to back up her data and
- send some datasets to her colleague Bob. Sam uses the following commands
- to get the job done:
-
- ~~~
- $ cp *dataset* backup/datasets
- $ cp ____calibration____ backup/calibration
- $ cp 2015-____-____ send_to_bob/all_november_files/
- $ cp ____ send_to_bob/all_datasets_created_on_a_23rd/
- ~~~
-
-
- Help Sam by filling in the blanks.
-
- The resulting directory structure should look like this
- ```
- .
- ├── 2015-10-23-calibration.txt
- ├── 2015-10-23-dataset1.txt
- ├── 2015-10-23-dataset2.txt
- ├── 2015-10-23-dataset_overview.txt
- ├── 2015-10-26-calibration.txt
- ├── 2015-10-26-dataset1.txt
- ├── 2015-10-26-dataset2.txt
- ├── 2015-10-26-dataset_overview.txt
- ├── 2015-11-23-calibration.txt
- ├── 2015-11-23-dataset1.txt
- ├── 2015-11-23-dataset2.txt
- ├── 2015-11-23-dataset_overview.txt
- ├── backup
- │   ├── calibration
- │   │   ├── 2015-10-23-calibration.txt
- │   │   ├── 2015-10-26-calibration.txt
- │   │   └── 2015-11-23-calibration.txt
- │   └── datasets
- │       ├── 2015-10-23-dataset1.txt
- │       ├── 2015-10-23-dataset2.txt
- │       ├── 2015-10-23-dataset_overview.txt
- │       ├── 2015-10-26-dataset1.txt
- │       ├── 2015-10-26-dataset2.txt
- │       ├── 2015-10-26-dataset_overview.txt
- │       ├── 2015-11-23-dataset1.txt
- │       ├── 2015-11-23-dataset2.txt
- │       └── 2015-11-23-dataset_overview.txt
- └── send_to_bob
-     ├── all_datasets_created_on_a_23rd
-     │   ├── 2015-10-23-dataset1.txt
-     │   ├── 2015-10-23-dataset2.txt
-     │   ├── 2015-10-23-dataset_overview.txt
-     │   ├── 2015-11-23-dataset1.txt
-     │   ├── 2015-11-23-dataset2.txt
-     │   └── 2015-11-23-dataset_overview.txt
-     └── all_november_files
-         ├── 2015-11-23-calibration.txt
-         ├── 2015-11-23-dataset1.txt
-         ├── 2015-11-23-dataset2.txt
-         └── 2015-11-23-dataset_overview.txt
- ```
-
-
-<details>
-<summary>Solution
-</summary>
- 
- $ cp *calibration.txt backup/calibration
- 
- $ cp 2015-11-* send_to_bob/all_november_files/
- 
- $ cp *-23-dataset* send_to_bob/all_datasets_created_on_a_23rd/
- 
- 
-</details>
-
- ## 3.9 Organizing Directories and Files
+## 3.8 Organizing Directories and Files
 
  Jamie is working on a project and she sees that her files aren't very well
  organized:
@@ -458,7 +366,7 @@ $ ls -F
  mv *.dat analyzed
  </details>
 
- ## 3.10 Reproduce a folder structure
+## 3.9 Reproduce a folder structure
 
  You're starting a new experiment, and would like to duplicate the directory
  structure from your previous experiment so you can add new data.
