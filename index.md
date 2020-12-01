@@ -1,16 +1,22 @@
-# Episode 2
+# Episode 2 Navigating Files and Directories
+
+![Filesystem](fig/filesystem.svg)
+
+![File System 2](fig/home-directories.svg)
 
 ## 2.1 Exploring More `ls` Flags
 
-You can also use two options at the same time. What does the command `ls` do when used
-with the `-l` option? What about if you use both the `-l` and the `-h` option?
+What does the command `ls` do when used
+with the `-l` option? 
 
-Some of its output is about properties that we do not cover in this lesson (such as file permissions and ownership), but the rest should be useful nevertheless.
+What about if you use both the `-l` and the `-h` option?
+
 <details>
 <summary>Solution
 </summary>
-`-l` - long listing format, showing not only the file/directory names but also additional information such as the file size and the time of its last modification. 
-`-h` + `-l` option -makes file size ‘Human readable’, i.e. displaying something like `5.3K` instead of `5369`.
+`-l` - long listing format, showing not only the file/directory names but also additional information such as the file size and the time of its last modification. Some of its output is about properties that we do not cover in this lesson (such as file permissions and ownership), but the rest should be useful nevertheless.   
+ 
+`-h` + `-l`  - makes file size ‘Human readable’, i.e. `5.3K` instead of `5369`.
 </details>
 
 ## 2.2 Listing in Reverse Chronological Order
@@ -53,7 +59,7 @@ Starting from `/Users/amanda/data`, which of the following commands could Amanda
 
 6. No: this would navigate into a directory `home` in the current directory if it exists.
 
-7. Yes: unnecessarily complicated, but correct.
+<strong>7. Yes: unnecessarily complicated, but correct.</strong>
 
 8. Yes: shortcut to go back to the user's home directory.
 
@@ -61,7 +67,7 @@ Starting from `/Users/amanda/data`, which of the following commands could Amanda
 </details>
 
 ## 2.4 Relative Path Resolution
-Using the filesystem diagram below, if `pwd` displays `/Users/thing`,
+If `pwd` displays `/Users/thing`,
  what will `ls -F ../backup` display?
 1.  `../backup: No such file or directory`
 2.  `2012-12-01 2013-01-08 2013-01-27`
@@ -85,8 +91,7 @@ Using the filesystem diagram below, if `pwd` displays `/Users/thing`,
 
 ## 2.5 `ls` Reading Comprehension
 
-Using the filesystem diagram below,
-if `pwd` displays `/Users/backup`,
+If `pwd` displays `/Users/backup`,
 and `-r` tells `ls` to display things in reverse order,
 what command(s) will result in the following output:
 
@@ -109,8 +114,11 @@ pnas_sub/ pnas_final/ original/
 3. Yes: uses the absolute path explicitly.
 </details>
 
-# Episode 3
+# Episode 3 Working with Files and Directories
 
+![Controls](fig/controls.PNG)
+
+<!--- 
 ## 3.1 Creating Files a Different Way
 
 We have seen how to create text files using the `nano` editor.
@@ -148,24 +156,24 @@ When you look at your current directory using the GUI file explorer,
     efficiently generate a blank text file to be used by such
     programs.
 </details>
-
+--->
 ## 3.2 Moving Files to a new folder
 
-After running the following commands,
 Jamie realizes that she put the files `sucrose.dat` and `maltose.dat` into the wrong folder. 
-The files should have been placed in the `raw` folder.
+The files should have been placed in the `raw` folder. She runs these commands to explore the file system.
 
 ~~~
 $ ls -F
 analyzed/ raw/
+
 $ ls -F analyzed
 fructose.dat glucose.dat maltose.dat sucrose.dat
+
 $ cd analyzed
  ~~~
 
 
-Fill in the blanks to move these files to the `raw/` folder
-(i.e. the one she forgot to put them in) 
+Fill in the blanks to move these files to the `raw/` folder to correct her mistake
 
  ~~~
 $ mv sucrose.dat maltose.dat ____/____
@@ -179,10 +187,8 @@ $ mv sucrose.dat maltose.dat ../raw
 
 </details>
 
-
- ## 3.3 Renaming Files
- Suppose that you created a plain-text file in your current directory to contain a list of the
- statistical tests you will need to do to analyze your data, and named it: `statstics.txt`
+## 3.3 Renaming Files
+ Suppose you created a text file called `statstics.txt`
 
  After creating and saving this file you realize you misspelled the filename! You want to
  correct the mistake, which of the following commands could you use to do so?
@@ -244,20 +250,15 @@ What is the output of the closing `ls` command in the sequence shown below?
 <details>
 <summary>Solution
 </summary>
- We start in the `/Users/jamie/data` directory, and create a new folder called `recombined`.
- The second line moves (`mv`) the file `proteins.dat` to the new folder (`recombined`).
- The third line makes a copy of the file we just moved.  The tricky part here is where the file was
- copied to.  Recall that `..` means 'go up a level', so the copied file is now in `/Users/jamie`.
- Notice that `..` is interpreted with respect to the current working
- directory, not with respect to the location of the file being copied.
- So, the only thing that will show using ls (in `/Users/jamie/data`) is the recombined folder.
-
- 1. No, see explanation above.  `proteins-saved.dat` is located at `/Users/jamie`
  2. Yes
- 3. No, see explanation above.  `proteins.dat` is located at `/Users/jamie/data/recombined`
- 4. No, see explanation above.  `proteins-saved.dat` is located at `/Users/jamie`
+ 
+Starting in the `/Users/jamie/data` directory
+  $ mkdir recombined ---- create new folder
+  $ mv proteins.dat recombined/ ----- move proteins.dat to the new folder
+  $ cp recombined/proteins.dat ../proteins-saved.dat ----- copies this file to the parent directory of our current location
 </details>
 
+<!--- 
 ## 3.5 Using `rm` Safely
 
  What happens when we execute `rm -i thesis_backup/quotations.txt`?
@@ -268,6 +269,7 @@ What is the output of the closing `ls` command in the sequence shown below?
 </summary>
 Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all the files removed will disappear forever.
 </details>
+
 
 ## 3.6 Copy with Multiple Filenames
 
@@ -305,10 +307,26 @@ Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all t
  If given three file names, `cp` throws an error, because it is expecting a directory
  name as the last argument.
 </details>
+--->
+## Wildcards
+(Examples from `data-shell/molecules` directory)
+`*` matches zero or more characters. 
+ 
+`*.pdb` matches `ethane.pdb`, `propane.pdb`, and every file that ends with `.pdb`. 
+ 
+`p*.pdb` only matches `pentane.pdb` and `propane.pdb`
+
+`?` matches exactly one character. 
+
+`?ethane.pdb` would match `methane.pdb`
+`*ethane.pdb` matches both `ethane.pdb`, and `methane.pdb`.
+`???ane.pdb` matches three characters followed by `ane.pdb`, giving `cubane.pdb` `ethane.pdb` `octane.pdb`.
+
+
 
 ## 3.7 List filenames matching a pattern
-
- When run in the `molecules` directory, which `ls` command(s) will
+List the contents of the `molecules` directory
+Which `ls` command(s) will
  produce this output?
 
  `ethane.pdb   methane.pdb`
@@ -326,7 +344,6 @@ Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all t
 
 
 ## 3.8 Organizing Directories and Files
-
  Jamie is working on a project and she sees that her files aren't very well
  organized:
 
@@ -340,32 +357,15 @@ $ ls -F
 
 
  The `fructose.dat` and `sucrose.dat` files contain output from her data
- analysis. What command(s) covered in this lesson does she need to run so that the commands below will
- produce the output shown?
-
- ~~~
- $ ls -F
- ~~~
-
- ~~~
- analyzed/   raw/
- ~~~
-
- ~~~
- $ ls analyzed
- ~~~
-
- ~~~
- fructose.dat    sucrose.dat
- ~~~
-
+ analysis. How could you use wildcards with the `mv` command to move both files to the `analyzed` directory at the same time?
 
 <details>
 <summary>Solution
 </summary>
  mv *.dat analyzed
  </details>
-
+ 
+<!---
 ## 3.9 Reproduce a folder structure
 
  You're starting a new experiment, and would like to duplicate the directory
@@ -434,3 +434,93 @@ $ ls -F
  The final set of commands generates the 'raw' and 'processed' directories at the same level
  as the 'data' directory.
 </details>
+--->
+
+# Episode 4 Pipes and Filters
+
+## Exercise 4.1 Sorting
+If we run sort on a file containing the following lines:
+`10`   
+`2`   
+`19`   
+`22`   
+`6`   
+the output is:   
+`10`   
+`19`  
+`2`  
+`22`   
+`6`   
+
+If we run sort -n on the same input, we get this instead:   
+`2`   
+`6`   
+`10`   
+`19`   
+`22` 
+  
+Why?
+
+## Exercise 4.2
+We have already met the head command, which prints lines from the start of a file. tail is similar, but prints lines from the end of a file instead.
+
+If we were to run these 2 commands:
+```.env
+$ head -n 3 animals.txt > animals-subset.txt
+$ tail -n 2 animals.txt >> animals-subset.txt
+```
+what would animals.txt contain?
+1. The first three lines of animals.txt  
+2. The last two lines of animals.txt  
+3. The first three lines and the last two lines of animals.txt   
+4. The second and third lines of animals.txt   
+
+<details>
+<summary>Solution
+</summary>
+3.
+</details>
+
+
+![Redirects and pipes](fig/redirects-and-pipes.svg)
+
+## Exercise 4.3
+In our current directory, we want to find the 3 files which have the least number of lines. Which command would work?
+
+1. `wc -l * > sort -n > head -n 3   `
+2. `wc -l * | sort -n | head -n 1-3 `  
+3. `wc -l * | head -n 3 | sort -n ` 
+4. `wc -l * | sort -n | head -n 3 `  
+
+<details>
+<summary>Solution
+</summary>
+4.        
+The pipe character | is used to connect the output from one command to the input of another. > is used to redirect standard output to a file
+</details>
+
+
+## Exercise 4.4
+A file called animals.txt looks like this:
+```
+2012-11-05,deer
+2012-11-05,rabbit
+2012-11-05,raccoon
+2012-11-06,rabbit
+2012-11-06,deer
+2012-11-06,fox
+2012-11-07,rabbit
+2012-11-07,bear
+```
+If we run this command, what lines will end up in `final.txt`?
+```
+$ cat animals.txt | head -n 5 | tail -n 3 | sort -r > final.txt
+```
+<details>
+<summary>Solution
+</summary>
+2012-11-06,rabbit
+2012-11-06,deer
+2012-11-05,raccoon
+</details>
+
