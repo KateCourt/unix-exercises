@@ -4,6 +4,9 @@
 
 ![File System 2](fig/home-directories.svg)
 
+
+
+
 ## 2.1 Exploring More `ls` Flags
 
 What does the command `ls` do when used
@@ -19,16 +22,25 @@ What about if you use both the `-l` and the `-h` option?
 `-h` + `-l`  - makes file size ‘Human readable’, i.e. `5.3K` instead of `5369`.
 </details>
 
+
+
+
 ## 2.2 Listing in Reverse Chronological Order
-By default ls lists the contents of a directory in alphabetical order by name. The command `ls -t` lists items by time of last change instead of alphabetically. The command `ls -r` lists the contents of a directory in reverse order. Which file is displayed last when you combine the `-t` and `-r` flags? Hint: You may need to use the `-l` flag to see the last changed dates.
+By default ls lists the contents of a directory in alphabetical order by name. The command `ls -t` lists items by time of last change instead of alphabetically. The command `ls -r` lists the contents of a directory in reverse order. What happens when you combine the `-t` and `-r` flags? Hint: You may need to use the `-l` flag to see the last changed dates.
 
 <details>
 <summary>Solution
 
 </summary>
-`-rt` - most recently changed file. 
-          This can be very useful for finding your most recent edits or checking to see if a new output file was written.
+`-t` - most recently changed file first.    
+
+`-rt` - most recently changed file last.  
+
+This can be very useful for finding your most recent edits or checking to see if a new output file was written.
 </details>
+
+
+
 
 ## 2.3 Absolute vs Relative Paths
 Starting from `/Users/amanda/data`, which of the following commands could Amanda use to navigate to her home directory, which is `/Users/amanda`?
@@ -55,15 +67,15 @@ Starting from `/Users/amanda/data`, which of the following commands could Amanda
 
 4. No: this goes up two levels, i.e. ends in `/Users`.
 
-5. Yes: `~` stands for the user's home directory, in this case `/Users/amanda`.
+<strong>5. Yes: `~` stands for the user's home directory, in this case `/Users/amanda`.</strong>
 
 6. No: this would navigate into a directory `home` in the current directory if it exists.
 
 <strong>7. Yes: unnecessarily complicated, but correct.</strong>
 
-8. Yes: shortcut to go back to the user's home directory.
+<strong>8. Yes: shortcut to go back to the user's home directory.</strong>
 
-9. Yes: goes up one level.
+<strong>9. Yes: goes up one level.</strong>
 </details>
 
 ## 2.4 Relative Path Resolution
@@ -86,7 +98,7 @@ If `pwd` displays `/Users/thing`,
 
 3. No: see previous explanation.  
 
-4. Yes: `../backup/` refers to `/Users/backup/`.
+<strong>4. Yes: `../backup/` refers to `/Users/backup/`.</strong>
 </details>
 
 ## 2.5 `ls` Reading Comprehension
@@ -102,16 +114,19 @@ pnas_sub/ pnas_final/ original/
 ![File System for Challenge Questions](fig/filesystem-challenge.svg)
 
 1.  `ls pwd`
+
 2.  `ls -r -F`
+
 3.  `ls -r -F /Users/backup`
+
 <details>
 <summary>Solution
 </summary>
 1. No: `pwd` is not the name of a directory.
 
-2. Yes: `ls` without directory argument lists files and directories in the current directory.
+<strong>2. Yes: `ls` without directory argument lists files and directories in the current directory.</strong>
 
-3. Yes: uses the absolute path explicitly.
+<strong>3. Yes: uses the absolute path explicitly.</strong>
 </details>
 
 # Episode 3 Working with Files and Directories
@@ -204,7 +219,7 @@ $ mv sucrose.dat maltose.dat ../raw
  1. No.  While this would create a file with the correct name, the incorrectly named file still exists in the directory
  and would need to be deleted.
  
- 2. Yes
+ <strong>2. Yes</strong>
  
  3. No, the period(.) indicates where to move the file, but does not provide a new file name; identical file names
  cannot be created.
@@ -250,12 +265,15 @@ What is the output of the closing `ls` command in the sequence shown below?
 <details>
 <summary>Solution
 </summary>
- 2. Yes
+ 2. 
  
 Starting in the `/Users/jamie/data` directory
-  $ mkdir recombined ---- create new folder
-  $ mv proteins.dat recombined/ ----- move proteins.dat to the new folder
-  $ cp recombined/proteins.dat ../proteins-saved.dat ----- copies this file to the parent directory of our current location
+
+  $ mkdir recombined ----> create new folder
+  
+  $ mv proteins.dat recombined/ -----> move proteins.dat to the new folder
+  
+  $ cp recombined/proteins.dat ../proteins-saved.dat -----> copies this file to the parent directory of our current location
 </details>
 
 <!--- 
@@ -310,6 +328,7 @@ Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all t
 --->
 ## Wildcards
 (Examples from `data-shell/molecules` directory)
+
 `*` matches zero or more characters. 
  
 `*.pdb` matches `ethane.pdb`, `propane.pdb`, and every file that ends with `.pdb`. 
@@ -319,14 +338,15 @@ Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all t
 `?` matches exactly one character. 
 
 `?ethane.pdb` would match `methane.pdb`
+
 `*ethane.pdb` matches both `ethane.pdb`, and `methane.pdb`.
+
 `???ane.pdb` matches three characters followed by `ane.pdb`, giving `cubane.pdb` `ethane.pdb` `octane.pdb`.
 
 
 
 ## 3.7 List filenames matching a pattern
-List the contents of the `molecules` directory
-Which `ls` command(s) will
+In the `molecules` directory which `ls` command(s) will
  produce this output?
 
  `ethane.pdb   methane.pdb`
@@ -439,7 +459,8 @@ $ ls -F
 # Episode 4 Pipes and Filters
 
 ## Exercise 4.1 Sorting
-If we run sort on a file containing the following lines:
+If we run `sort` on a file containing the following lines:
+
 `10`   
 `2`   
 `19`   
@@ -452,7 +473,7 @@ the output is:
 `22`   
 `6`   
 
-If we run sort -n on the same input, we get this instead:   
+If we run `sort -n` on the same input, we get this instead:   
 `2`   
 `6`   
 `10`   
@@ -462,18 +483,18 @@ If we run sort -n on the same input, we get this instead:
 Why?
 
 ## Exercise 4.2
-We have already met the head command, which prints lines from the start of a file. tail is similar, but prints lines from the end of a file instead.
+The `head` command prints lines from the start of a file and the `tail` prints lines from the end of a file instead.
 
 If we were to run these 2 commands:
 ```.env
 $ head -n 3 animals.txt > animals-subset.txt
 $ tail -n 2 animals.txt >> animals-subset.txt
 ```
-what would animals.txt contain?
-1. The first three lines of animals.txt  
-2. The last two lines of animals.txt  
-3. The first three lines and the last two lines of animals.txt   
-4. The second and third lines of animals.txt   
+what would `animals.txt` contain?
+1. The first three lines of `animals.txt ` 
+2. The last two lines of `animals.txt`  
+3. The first three lines and the last two lines of `animals.txt`   
+4. The second and third lines of `animals.txt` `  
 
 <details>
 <summary>Solution
@@ -520,7 +541,10 @@ $ cat animals.txt | head -n 5 | tail -n 3 | sort -r > final.txt
 <summary>Solution
 </summary>
 2012-11-06,rabbit
+
 2012-11-06,deer
+
 2012-11-05,raccoon
+
 </details>
 
