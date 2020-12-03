@@ -59,22 +59,28 @@ Starting from `/Users/amanda/data`, which of the following commands could Amanda
 <details>
 <summary>Solution
 </summary>
+<ol>
+<li>First</li>
+<li>First</li>
+</ol>
+
+
 1. No: `.` stands for the current directory.
-
+<br>
 2. No: `/` stands for the root directory.
-
+<br>
 3. No: Amanda's home directory is `/Users/amanda`.
-
+<br>
 4. No: this goes up two levels, i.e. ends in `/Users`.
-
+<br>
 <strong>5. Yes: `~` stands for the user's home directory, in this case `/Users/amanda`.</strong>
-
+<br>
 6. No: this would navigate into a directory `home` in the current directory if it exists.
-
+<br>
 <strong>7. Yes: unnecessarily complicated, but correct.</strong>
-
+<br>
 <strong>8. Yes: shortcut to go back to the user's home directory.</strong>
-
+<br>
 <strong>9. Yes: goes up one level.</strong>
 </details>
 
