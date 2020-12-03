@@ -59,10 +59,6 @@ Starting from `/Users/amanda/data`, which of the following commands could Amanda
 <details>
 <summary>Solution
 </summary>
-<ol>
-<li>First</li>
-<li>First</li>
-</ol>
 
 
 1. No: `.` stands for the current directory.
@@ -99,11 +95,11 @@ If `pwd` displays `/Users/thing`,
 <summary>Solution  
 </summary>
 1. No: there *is* a directory `backup` in `/Users`.  
-
+<br>
 2. No: this is the content of `Users/thing/backup`, but with `..` we asked for one level further up.  
-
+<br>
 3. No: see previous explanation.  
-
+<br>
 <strong>4. Yes: `../backup/` refers to `/Users/backup/`.</strong>
 </details>
 
@@ -129,9 +125,9 @@ pnas_sub/ pnas_final/ original/
 <summary>Solution
 </summary>
 1. No: `pwd` is not the name of a directory.
-
+<br>
 <strong>2. Yes: `ls` without directory argument lists files and directories in the current directory.</strong>
-
+<br>
 <strong>3. Yes: uses the absolute path explicitly.</strong>
 </details>
 
@@ -224,12 +220,12 @@ $ mv sucrose.dat maltose.dat ../raw
 </summary>
  1. No.  While this would create a file with the correct name, the incorrectly named file still exists in the directory
  and would need to be deleted.
- 
+ <br>
  <strong>2. Yes</strong>
- 
+ <br>
  3. No, the period(.) indicates where to move the file, but does not provide a new file name; identical file names
  cannot be created.
- 
+ <br>
  4. No, the period(.) indicates where to copy the file, but does not provide a new file name; identical file names
  cannot be created.
 </details>
@@ -272,13 +268,13 @@ What is the output of the closing `ls` command in the sequence shown below?
 <summary>Solution
 </summary>
  2. 
- 
+ <br>
 Starting in the `/Users/jamie/data` directory
-
+<br>
   $ mkdir recombined ----> create new folder
-  
+  <br>
   $ mv proteins.dat recombined/ -----> move proteins.dat to the new folder
-  
+  <br>
   $ cp recombined/proteins.dat ../proteins-saved.dat -----> copies this file to the parent directory of our current location
 </details>
 
@@ -333,15 +329,16 @@ Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all t
 </details>
 --->
 ## Wildcards
-(Examples from `data-shell/molecules` directory)
+(Examples from `data-shell/molecules` directory)<br><br>
 
-`*` matches zero or more characters. 
+**`*` matches zero or more characters.**
  
 `*.pdb` matches `ethane.pdb`, `propane.pdb`, and every file that ends with `.pdb`. 
  
 `p*.pdb` only matches `pentane.pdb` and `propane.pdb`
 
-`?` matches exactly one character. 
+<br><br>
+**`?` matches exactly one character.** 
 
 `?ethane.pdb` would match `methane.pdb`
 
@@ -547,9 +544,9 @@ $ cat animals.txt | head -n 5 | tail -n 3 | sort -r > final.txt
 <summary>Solution
 </summary>
 2012-11-06,rabbit
-
+<br>
 2012-11-06,deer
-
+<br>
 2012-11-05,raccoon
 
 </details>
