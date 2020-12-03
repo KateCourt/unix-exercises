@@ -504,7 +504,8 @@ what would `animals.txt` contain?
 </summary>
 3.
 </details>
-
+<br>
+<br><hr>
 
 ![Redirects and pipes](fig/redirects-and-pipes.svg)
 
