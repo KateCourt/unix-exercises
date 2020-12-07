@@ -1,11 +1,13 @@
 # Episode 5 Loops
 
-![Filesystem](fig/filesystem.svg)
+The general form of a loop:
 
-![File System 2](fig/home-directories.svg)
-
-
-
+~~~
+for thing in list_of_things
+do
+    operation_using $thing    # Indentation within the loop is not required, but aids legibility
+done
+~~~
 
 ## 5.1 Variables in loops
 
@@ -25,6 +27,7 @@ $ for datafile in *.pdb
 ~~~
 
 Now, what is the output of the following code?
+
 ~~~
 $ for datafile in *.pdb
 > do
@@ -33,9 +36,9 @@ $ for datafile in *.pdb
 ~~~
 
 Why do these two loops give different outputs?
+
 <details>
 <summary>Solution</summary>
-
 The first code block gives the same output on each iteration through the loop. Bash expands the wildcard *.pdb within the loop body (as well as before the loop starts) to match all files ending in .pdb and then lists them using ls. The expanded loop would look like this:
 
 ~~~
