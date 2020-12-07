@@ -45,7 +45,7 @@ done
 $ history | tail -n 5 > recent.sh
 ~~~~
 
-If you run the above command the last command in the file is the history command itself, i.e., the shell has added history to the command log before actually running it. In fact, the shell always adds commands to the log before running them. Why do you think it does this?
+If you run the above command the last command in the file is the `history` command itself, i.e., the shell has added `history` to the command log before actually running it. In fact, the shell always adds commands to the log before running them. Why do you think it does this?
 
 <details>
 <summary>Solution</summary>
