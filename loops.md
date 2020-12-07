@@ -109,4 +109,45 @@ $ for filename in *c*
 4 is the correct answer. * matches zero or more characters, so a file name with zero or more characters before a letter c and zero or more characters after the letter c will be matched.
 </details>
 
+## 5.3 Saving to a File in a Loop - Part One
 
+In the `data-shell/molecules` directory, what is the effect of this loop?
+
+~~~
+for alkanes in *.pdb
+do
+    echo $alkanes
+    cat $alkanes > alkanes.pdb
+done
+~~~
+
+1. Prints `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb` and `propane.pdb`, and the text from `propane.pdb` will be saved to a file called `alkanes.pdb`.
+2. Prints `cubane.pdb`, `ethane.pdb`, and `methane.pdb`, and the text from all three files would be concatenated and saved to a file called `alkanes.pdb`.
+3. Prints `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, and `pentane.pdb`, and the text from `propane.pdb` will be saved to a file called `alkanes.pdb`.
+4. None of the above.
+
+<details>
+<summary>Solution</summary>
+1 is the correct answer. The text from each file in turn gets written to the `alkanes.pdb` file. However, the file gets overwritten on each loop interation, so the final content of `alkanes.pdb` is the text from the `propane.pdb` file.
+</details>
+
+## 5.4 Saving to a File in a Loop - Part Two
+
+Also in the `data-shell/molecules` directory, what would be the output of the following loop?
+
+~~~
+for datafile in *.pdb
+do
+    cat $datafile >> all.pdb
+done
+~~~
+
+1. All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, and `pentane.pdb` would be concatenated and saved to a file called `all.pdb`.
+2. The text from `ethane.pdb` will be saved to a file called `all.pdb`.
+3. All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb` and `propane.pdb` would be concatenated and saved to a file called `all.pdb`.
+4. All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb` and `propane.pdb` would be printed to the screen and saved to a file called `all.pdb`.
+
+<details>
+<summary>Solution</summary>
+3 is the correct answer. `>>` appends to a file, rather than overwriting it with the redirected output from a command. Given the output from the `cat` command has been redirected, nothing is printed to the screen.
+</details>
