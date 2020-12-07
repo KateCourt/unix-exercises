@@ -9,7 +9,7 @@ do
 done
 ~~~
 
-## 5.1 Variables in loops
+## 5.1 Variables in Loops
 
 This exercise refers to the `data-shell/molecules` directory. `ls` gives the following output:
 
@@ -73,7 +73,7 @@ propane.pdb
 
 ## 5.2 Limiting Sets of Files
 
-What would be the output of running the following loop in the data-shell/molecules directory?
+What would be the output of running the following loop in the `data-shell/molecules` directory?
 
 ~~~
 $ for filename in c*
@@ -89,7 +89,9 @@ $ for filename in c*
 
 <details>
 <summary>Solution</summary>
+    
 4 is the correct answer. * matches zero or more characters, so any file name starting with the letter c, followed by zero or more other characters will be matched.
+
 </details>
 
 How would the output differ from using this command instead?
@@ -109,7 +111,9 @@ $ for filename in *c*
 
 <details>
 <summary>Solution</summary>
+    
 4 is the correct answer. * matches zero or more characters, so a file name with zero or more characters before a letter c and zero or more characters after the letter c will be matched.
+
 </details>
 
 ## 5.3 Saving to a File in a Loop - Part One
