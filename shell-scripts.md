@@ -36,18 +36,22 @@ do
 	cut -d , -f 2 $file | sort | uniq
 done
 ~~~
+
 </details>
 
-## 6.2 List Unique Species
+## 6.2 Why Record Commands in the History Before Running Them?
 
 ~~~
 $ history | tail -n 5 > recent.sh
 ~~~~
+
 If you run the above command the last command in the file is the history command itself, i.e., the shell has added history to the command log before actually running it. In fact, the shell always adds commands to the log before running them. Why do you think it does this?
 
 <details>
 <summary>Solution</summary>
+	
 If a command causes something to crash or hang, it might be useful to know what that command was, in order to investigate the problem. Were the command only be recorded after running it, we would not have a record of the last command run in the event of a crash
+
 </details>
 
 ## 6.3 Variables in Shell Scripts
@@ -74,6 +78,7 @@ Which of the following outputs would you expect to see?
 
 <details>
 <summary>Solution</summary>
+	
 The correct answer is 2.
 
 The special variables $1, $2 and $3 represent the command line arguments given to the script, such that the commands run are:
@@ -84,6 +89,7 @@ $ tail -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb
 ~~~
 
 The shell does not expand `'*.pdb'` because it is enclosed by quote marks. As such, the first argument to the script is `'*.pdb'` which gets expanded within the script by `head` and `tail`.
+
 </details>
 
 ## 6.4 Find the Longest File With a Given Extension
@@ -106,9 +112,11 @@ $ bash longest.sh /tmp/data pdb
 
 wc -l $1/*.$2 | sort -n | tail -n 2 | head -n 1
 ~~~
+
 The first part of the pipeline, `wc -l $1/*.$2 | sort -n`, counts the lines in each file and sorts them numerically (largest last). When there’s more than one file, `wc` also outputs a final summary line, giving the total number of lines across all files. We use `tail -n 2 | head -n 1` to throw away this last line.
 
 With `wc -l $1/*.$2 | sort -n | tail -n 1` we’ll see the final summary line: we can build our pipeline up in pieces to be sure we understand the output.
+
 </details>
 
 ## 6.5 Script Reading Comprehension
@@ -119,6 +127,7 @@ For this question, consider the data-shell/molecules directory once again. This 
 # Script 1
 echo *.*
 ~~~
+
 ~~~
 # Script 2
 for filename in $1 $2 $3
@@ -126,12 +135,15 @@ do
     cat $filename
 done
 ~~~
+
 ~~~
 # Script 3
 echo $@.pdb
 ~~~
+
 <details>
 <summary>Solution</summary>
+	
 In each case, the shell expands the wildcard in `*.pdb` before passing the resulting list of file names as arguments to the script.
 
 Script 1 would print out a list of all files containing a dot in their name. The arguments passed to the script are not actually used anywhere in the script.
@@ -143,9 +155,11 @@ Script 3 would print all the arguments to the script (i.e. all the `.pdb` files)
 ~~~
 cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb.pdb
 ~~~
+
 </details>
 
 ## 6.6 Debugging Scripts
+
 Suppose you have saved the following script in a file called `do-errors.sh` in Nelle’s `north-pacific-gyre/2012-07-03` directory:
 
 ~~~
@@ -158,18 +172,22 @@ done
 ~~~
 
 When you run it:
+
 ~~~
 $ bash do-errors.sh NENE*[AB].txt
 ~~~
+
 the output is blank. To figure out why, re-run the script using the `-x` option:
 
 ~~~
 bash -x do-errors.sh NENE*[AB].txt
 ~~~
-What is the output showing you? Which line is responsible for the error?
 
+What is the output showing you? Which line is responsible for the error?
 
 <details>
 <summary>Solution</summary>
+	
 The `-x` option causes `bash` to run in debug mode. This prints out each command as it is run, which will help you to locate errors. In this example, we can see that `echo` isn’t printing anything. We have made a typo in the loop variable name, and the variable `datfile` doesn’t exist, hence returning an empty string.
+
 </details>
