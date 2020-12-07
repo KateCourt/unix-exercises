@@ -151,3 +151,5 @@ done
 <summary>Solution</summary>
 3 is the correct answer. `>>` appends to a file, rather than overwriting it with the redirected output from a command. Given the output from the `cat` command has been redirected, nothing is printed to the screen.
 </details>
+
+![shell_script_for_loop_flow_chart](fig/shell_script_for_loop_flow_chart.svg)
