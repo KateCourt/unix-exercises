@@ -153,3 +153,43 @@ done
 </details>
 
 ![shell_script_for_loop_flow_chart](fig/shell_script_for_loop_flow_chart.svg)
+
+## 5.5 Doing a Dry Run
+
+A loop is a way to do many things at once — or to make many mistakes at once if it does the wrong thing. One way to check what a loop would do is to echo the commands it would run instead of actually running them.
+
+Suppose we want to preview the commands the following loop will execute without actually running those commands:
+
+~~~
+$ for datafile in *.pdb
+> do
+>   cat $datafile >> all.pdb
+> done
+~~~
+
+What is the difference between the two loops below, and which one would we want to run?
+
+~~~
+# Version 1
+$ for datafile in *.pdb
+> do
+>   echo cat $datafile >> all.pdb
+> done
+~~~
+
+~~~
+# Version 2
+$ for datafile in *.pdb
+> do
+>   echo "cat $datafile >> all.pdb"
+> done
+~~~
+
+<details>
+<summary>Solution</summary>
+The second version is the one we want to run. This prints to screen everything enclosed in the quote marks, expanding the loop variable name because we have prefixed it with a dollar sign.
+
+The first version appends the output from the command `echo cat $datafile` to the file, `all.pdb`. This file will just contain the list; `cat cubane.pdb`, `cat ethane.pdb`, `cat methane.pdb` etc.
+
+Try both versions for yourself to see the output! Be sure to open the `all.pdb` file to view its contents.
+</details>
