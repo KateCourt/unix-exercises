@@ -148,8 +148,8 @@ cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb.pdb
 ## 6.6 Debugging Scripts
 Suppose you have saved the following script in a file called `do-errors.sh` in Nelle’s `north-pacific-gyre/2012-07-03` directory:
 
-# Calculate stats for data files.
 ~~~
+# Calculate stats for data files.
 for datafile in "$@"
 do
     echo $datfile
