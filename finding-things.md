@@ -123,7 +123,9 @@ wc -l $(find . -name "*.dat") | sort -n
 ~~~
 <details>
 <summary>Solution</summary>
+	
 1. Find all files with a .dat extension recursively from the current directory
 2. Count the number of lines each of these files contains
 3. Sort the output from step 2. numerically
+
 </details>
