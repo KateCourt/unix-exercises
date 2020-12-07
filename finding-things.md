@@ -114,3 +114,16 @@ Option 2 is incorrect because the shell expands `*s.txt` instead of passing the 
 
 Option 3 is incorrect because it searches the contents of the files for lines which do not match ‘net’, rather than searching the file names.
 </details>
+
+## 7.3 `find` Pipeline Reading Comprehension
+
+Write a short explanatory comment for the following shell script:
+~~~
+wc -l $(find . -name "*.dat") | sort -n
+~~~
+<details>
+<summary>Solution</summary>
+1. Find all files with a .dat extension recursively from the current directory
+2. Count the number of lines each of these files contains
+3. Sort the output from step 2. numerically
+</details>
