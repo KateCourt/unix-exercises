@@ -90,7 +90,7 @@ $ for filename in c*
 <details>
 <summary>Solution</summary>
     
-4 is the correct answer. * matches zero or more characters, so any file name starting with the letter c, followed by zero or more other characters will be matched.
+4 is the correct answer. `*` matches zero or more characters, so any file name starting with the letter c, followed by zero or more other characters will be matched.
 
 </details>
 
@@ -112,7 +112,7 @@ $ for filename in *c*
 <details>
 <summary>Solution</summary>
     
-4 is the correct answer. * matches zero or more characters, so a file name with zero or more characters before a letter c and zero or more characters after the letter c will be matched.
+4 is the correct answer. `*` matches zero or more characters, so a file name with zero or more characters before a letter c and zero or more characters after the letter c will be matched.
 
 </details>
 
@@ -135,7 +135,9 @@ done
 
 <details>
 <summary>Solution</summary>
+    
 1 is the correct answer. The text from each file in turn gets written to the `alkanes.pdb` file. However, the file gets overwritten on each loop interation, so the final content of `alkanes.pdb` is the text from the `propane.pdb` file.
+
 </details>
 
 ## 5.4 Saving to a File in a Loop - Part Two
@@ -156,14 +158,16 @@ done
 
 <details>
 <summary>Solution</summary>
+    
 3 is the correct answer. `>>` appends to a file, rather than overwriting it with the redirected output from a command. Given the output from the `cat` command has been redirected, nothing is printed to the screen.
+
 </details>
 
 ![shell_script_for_loop_flow_chart](fig/shell_script_for_loop_flow_chart.svg)
 
 ## 5.5 Doing a Dry Run
 
-A loop is a way to do many things at once — or to make many mistakes at once if it does the wrong thing. One way to check what a loop would do is to echo the commands it would run instead of actually running them.
+A loop is a way to do many things at once — or to make many mistakes at once if it does the wrong thing. One way to check what a loop would do is to `echo` the commands it would run instead of actually running them.
 
 Suppose we want to preview the commands the following loop will execute without actually running those commands:
 
@@ -194,11 +198,13 @@ $ for datafile in *.pdb
 
 <details>
 <summary>Solution</summary>
+    
 The second version is the one we want to run. This prints to screen everything enclosed in the quote marks, expanding the loop variable name because we have prefixed it with a dollar sign.
 
 The first version appends the output from the command `echo cat $datafile` to the file, `all.pdb`. This file will just contain the list; `cat cubane.pdb`, `cat ethane.pdb`, `cat methane.pdb` etc.
 
 Try both versions for yourself to see the output! Be sure to open the `all.pdb` file to view its contents.
+
 </details>
 
 ## 5.6 Nested Loops
@@ -217,8 +223,10 @@ $ for species in cubane ethane methane
 
 <details>
 <summary>Solution</summary>
+    
 We have a nested loop, i.e. contained within another loop, so for each species in the outer loop, the inner loop (the nested loop) iterates over the list of temperatures, and creates a new directory for each combination.
 
 Try running the code for yourself to see which directories are created!
+
 </details>
 
