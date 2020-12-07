@@ -11,7 +11,7 @@ done
 
 ## 5.1 Variables in loops
 
-This exercise refers to the data-shell/molecules directory. ls gives the following output:
+This exercise refers to the `data-shell/molecules` directory. `ls` gives the following output:
 
 ~~~
 cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
@@ -39,7 +39,8 @@ Why do these two loops give different outputs?
 
 <details>
 <summary>Solution</summary>
-The first code block gives the same output on each iteration through the loop. Bash expands the wildcard *.pdb within the loop body (as well as before the loop starts) to match all files ending in .pdb and then lists them using ls. The expanded loop would look like this:
+    
+The first code block gives the same output on each iteration through the loop. Bash expands the wildcard `*.pdb` within the loop body (as well as before the loop starts) to match all files ending in `.pdb` and then lists them using `ls`. The expanded loop would look like this:
 
 ~~~
 $ for datafile in cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
@@ -47,6 +48,7 @@ $ for datafile in cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  
 >	ls cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 > done
 ~~~
+
 ~~~
 cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
@@ -66,6 +68,7 @@ octane.pdb
 pentane.pdb
 propane.pdb
 ~~~
+
 </details>
 
 ## 5.2 Limiting Sets of Files
