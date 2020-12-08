@@ -79,7 +79,7 @@ propane.pdb
 
 </details>
 
-## 5.2 Limiting Sets of Files
+## 5.2.1 Limiting Sets of Files
 
 What would be the output of running the following loop in the `data-shell/molecules` directory?
 
@@ -92,7 +92,7 @@ $ for filename in c*
 
 1. No files are listed.
 2. All files are listed.
-3. Only `cubane.pdb`, octane.pdb and pentane.pdb are listed.
+3. Only `cubane.pdb`, `octane.pdb` and `pentane.pdb` are listed.
 4. Only `cubane.pdb` is listed.
 
 <details>
@@ -101,6 +101,8 @@ $ for filename in c*
 4 is the correct answer. `*` matches zero or more characters, so any file name starting with the letter c, followed by zero or more other characters will be matched.
 
 </details>
+
+## 5.2.2 Limiting Sets of Files (Part 2)
 
 How would the output differ from using this command instead?
 
