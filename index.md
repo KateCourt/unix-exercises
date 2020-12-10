@@ -851,7 +851,7 @@ Which of the following outputs would you expect to see?
 <br><br>
 The special variables $1, $2 and $3 represent the command line arguments given to the script, such that the commands run are:
 <br>
-<img src="fig/6.3Sol.PNG">
+<img src="fig/6.3.PNG">
 <br>
 
 The shell does not expand `'*.pdb'` because it is enclosed by quote marks. As such, the first argument to the script is `'*.pdb'` which gets expanded within the script by `head` and `tail`.
@@ -869,7 +869,7 @@ $ bash longest.sh /tmp/data pdb
 <details>
 <summary>Solution</summary>
 
-<img src="fig/6.4Sol.PNG">
+<img src="fig/6.4.PNG">
 
 The first part of the pipeline, `wc -l $1/*.$2 | sort -n`, counts the lines in each file and sorts them numerically (largest last). When there’s more than one file, `wc` also outputs a final summary line, giving the total number of lines across all files. We use `tail -n 2 | head -n 1` to throw away this last line.
 <br><br>
