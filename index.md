@@ -608,33 +608,7 @@ Why do these two loops give different outputs?
 <details>
 <summary>Solution</summary>
 
-The first code block gives the same output on each iteration through the loop. Bash expands the wildcard `*.pdb` within the loop body (as well as before the loop starts) to match all files ending in `.pdb` and then lists them using `ls`. The expanded loop would look like this:
-<br>
-$ for datafile in cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb <br>
-> do<br>
->	ls cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
-> done<br>
-
-<br>
-
-cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
-cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
-cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
-cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
-cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
-cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
-
-
-The second code block lists a different file on each loop iteration. The value of the datafile variable is evaluated using $datafile, and then listed using ls.
-
-<br>
-cubane.pdb<br>
-ethane.pdb<br>
-methane.pdb<br>
-octane.pdb<br>
-pentane.pdb<br>
-propane.pdb<br>
-<br>
+<img src="fig/5.1Sol.PNG">
 
 </details>
 
@@ -737,7 +711,9 @@ done
 <br>
 
 ![shell_script_for_loop_flow_chart](fig/shell_script_for_loop_flow_chart.svg)
-
+<br>
+<br>
+<br>
 ## 5.5 Doing a Dry Run
 
 A loop is a way to do many things at once — or to make many mistakes at once if it does the wrong thing. One way to check what a loop would do is to `echo` the commands it would run instead of actually running them.
@@ -773,7 +749,7 @@ $ for datafile in *.pdb
 <summary>Solution</summary>
 
 <strong>The second version is the one we want to run.</strong> This prints to screen everything enclosed in the quote marks, expanding the loop variable name because we have prefixed it with a dollar sign.
-<br>
+<br><br>
 The first version appends the output from the command `echo cat $datafile` to the file, `all.pdb`. This file will just contain the list; `cat cubane.pdb`, `cat ethane.pdb`, `cat methane.pdb` etc.
 <br>
 Try both versions for yourself to see the output! Be sure to open the `all.pdb` file to view its contents.
@@ -875,8 +851,7 @@ Which of the following outputs would you expect to see?
 <br><br>
 The special variables $1, $2 and $3 represent the command line arguments given to the script, such that the commands run are:
 <br>
-$ head -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb<br>
-$ tail -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb<br>
+<img src="fig/6.3Sol.PNG">
 <br>
 
 The shell does not expand `'*.pdb'` because it is enclosed by quote marks. As such, the first argument to the script is `'*.pdb'` which gets expanded within the script by `head` and `tail`.
@@ -894,18 +869,7 @@ $ bash longest.sh /tmp/data pdb
 <details>
 <summary>Solution</summary>
 
-# Shell script which takes two arguments:
-<br>
-#    1. a directory name
-<br>
-#    2. a file extension
-<br>
-# and prints the name of the file in that directory with the most lines which matches the file extension.
-<br>
-# 
-<br>
-wc -l $1/*.$2 | sort -n | tail -n 2 | head -n 1
-<br>
+<img src="fig/6.4Sol.PNG">
 
 The first part of the pipeline, `wc -l $1/*.$2 | sort -n`, counts the lines in each file and sorts them numerically (largest last). When there’s more than one file, `wc` also outputs a final summary line, giving the total number of lines across all files. We use `tail -n 2 | head -n 1` to throw away this last line.
 <br><br>
@@ -939,11 +903,11 @@ echo $@.pdb
 <summary>Solution</summary>
 	
 In each case, the shell expands the wildcard in `*.pdb` before passing the resulting list of file names as arguments to the script.
-<br>
+<br><br>
 Script 1 would print out a list of all files containing a dot in their name. The arguments passed to the script are not actually used anywhere in the script.
-<br>
+<br><br>
 Script 2 would print the contents of the first 3 files with a `.pdb` file extension. `$1`, `$2`, and `$3` refer to the first, second, and third argument respectively.
-<br>
+<br><br>
 Script 3 would print all the arguments to the script (i.e. all the `.pdb` files), followed by `.pdb`. `$@` refers to all the arguments given to a shell script.
 
 <br><br>
