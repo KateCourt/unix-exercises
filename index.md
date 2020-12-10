@@ -870,7 +870,7 @@ $ bash longest.sh /tmp/data pdb
 <summary>Solution</summary>
 
 <img src="fig/6.4.PNG">
-
+<br>
 The first part of the pipeline, `wc -l $1/*.$2 | sort -n`, counts the lines in each file and sorts them numerically (largest last). When there’s more than one file, `wc` also outputs a final summary line, giving the total number of lines across all files. We use `tail -n 2 | head -n 1` to throw away this last line.
 <br><br>
 With `wc -l $1/*.$2 | sort -n | tail -n 1` we’ll see the final summary line: we can build our pipeline up in pieces to be sure we understand the output.
