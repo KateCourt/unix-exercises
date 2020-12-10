@@ -1,3 +1,12 @@
+# Nelle’s Pipeline: A Typical Problem
+
+Nelle Nemo, a marine biologist, has just returned from a six-month survey of the North Pacific Gyre, where she has been sampling gelatinous marine life in the Great Pacific Garbage Patch. She has 1520 samples that she’s run through an assay machine to measure the relative abundance of 300 proteins. She needs to run these 1520 files through an imaginary program called `goostats` she inherited. On top of this huge task, she has to write up results by the end of the month so her paper can appear in a special issue of Aquatic Goo Letters.
+
+The bad news is that if she has to run `goostats` by hand using a GUI, she’ll have to select and open a file 1520 times. If `goostats` takes 30 seconds to run each file, the whole process will take more than 12 hours of Nelle’s attention. With the shell, Nelle can instead assign her computer this mundane task while she focuses her attention on writing her paper.
+
+The next few lessons will explore the ways Nelle can achieve this. More specifically, they explain how she can use a command shell to run the `goostats` program, using loops to automate the repetitive steps of entering file names, so that her computer can work while she writes her paper.
+
+
 # Episode 2 Navigating Files and Directories
 
 ![Filesystem](fig/filesystem.svg)
@@ -555,3 +564,422 @@ $ cat animals.txt | head -n 5 | tail -n 3 | sort -r > final.txt
 
 </details>
 
+
+
+# Episode 5 Loops
+
+The general form of a loop:
+
+~~~
+for thing in list_of_things
+do
+    operation_using $thing    # Indentation within the loop is not required, but aids legibility
+done
+~~~
+
+## 5.1 Variables in Loops
+
+This exercise refers to the `data-shell/molecules` directory. `ls` gives the following output:
+
+~~~
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+~~~
+
+What is the output of the following code?
+
+~~~
+$ for datafile in *.pdb
+> do
+>    ls *.pdb
+> done
+~~~
+
+Now, what is the output of the following code?
+
+~~~
+$ for datafile in *.pdb
+> do
+>	ls $datafile
+> done
+~~~
+
+Why do these two loops give different outputs?
+
+<details>
+<summary>Solution</summary>
+
+The first code block gives the same output on each iteration through the loop. Bash expands the wildcard `*.pdb` within the loop body (as well as before the loop starts) to match all files ending in `.pdb` and then lists them using `ls`. The expanded loop would look like this:
+<br>
+$ for datafile in cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb <br>
+> do<br>
+>	ls cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
+> done<br>
+
+<br>
+
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb<br>
+
+
+The second code block lists a different file on each loop iteration. The value of the datafile variable is evaluated using $datafile, and then listed using ls.
+
+<br>
+cubane.pdb<br>
+ethane.pdb<br>
+methane.pdb<br>
+octane.pdb<br>
+pentane.pdb<br>
+propane.pdb<br>
+<br>
+
+</details>
+
+## 5.2.1 Limiting Sets of Files
+
+What would be the output of running the following loop in the `data-shell/molecules` directory?
+
+~~~
+$ for filename in c*
+> do
+>    ls $filename
+> done
+~~~
+
+1. No files are listed.
+2. All files are listed.
+3. Only `cubane.pdb`, `octane.pdb` and `pentane.pdb` are listed.
+4. Only `cubane.pdb` is listed.
+
+<details>
+<summary>Solution</summary>
+
+<strong>4 is the correct answer.</strong> `*` matches zero or more characters, so any file name starting with the letter c, followed by zero or more other characters will be matched.
+
+</details>
+
+## 5.2.2 Limiting Sets of Files (Part 2)
+
+How would the output differ from using this command instead?
+
+~~~
+$ for filename in *c*
+> do
+>    ls $filename
+> done
+~~~
+
+1. The same files would be listed.
+2. All the files are listed this time.
+3. No files are listed this time.
+4. The files cubane.pdb and octane.pdb will be listed.
+5. Only the file octane.pdb will be listed.
+
+<details>
+<summary>Solution</summary>
+
+<strong>4 is the correct answer.<\strong> `*` matches zero or more characters, so a file name with zero or more characters before a letter c and zero or more characters after the letter c will be matched.
+
+</details>
+
+## 5.3 Saving to a File in a Loop - Part One
+
+In the `data-shell/molecules` directory, what is the effect of this loop?
+
+~~~
+for alkanes in *.pdb
+do
+    echo $alkanes
+    cat $alkanes > alkanes.pdb
+done
+~~~
+
+1. Prints `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb` and `propane.pdb`, and the text from `propane.pdb` will be saved to a file called `alkanes.pdb`.
+2. Prints `cubane.pdb`, `ethane.pdb`, and `methane.pdb`, and the text from all three files would be concatenated and saved to a file called `alkanes.pdb`.
+3. Prints `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, and `pentane.pdb`, and the text from `propane.pdb` will be saved to a file called `alkanes.pdb`.
+4. None of the above.
+
+<details>
+<summary>Solution</summary>
+
+<strong>1 is the correct answer.</strong> The text from each file in turn gets written to the `alkanes.pdb` file. However, the file gets overwritten on each loop interaction, so the final content of `alkanes.pdb` is the text from the `propane.pdb` file.
+
+</details>
+
+## 5.4 Saving to a File in a Loop - Part Two
+
+Also in the `data-shell/molecules` directory, what would be the output of the following loop?
+
+~~~
+for datafile in *.pdb
+do
+    cat $datafile >> all.pdb
+done
+~~~
+
+1. All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, and `pentane.pdb` would be concatenated and saved to a file called `all.pdb`.
+2. The text from `ethane.pdb` will be saved to a file called `all.pdb`.
+3. All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb` and `propane.pdb` would be concatenated and saved to a file called `all.pdb`.
+4. All of the text from `cubane.pdb`, `ethane.pdb`, `methane.pdb`, `octane.pdb`, `pentane.pdb` and `propane.pdb` would be printed to the screen and saved to a file called `all.pdb`.
+
+<details>
+<summary>Solution</summary>
+
+<strong>3 is the correct answer.</strong> `>>` appends to a file, rather than overwriting it with the redirected output from a command. Given the output from the `cat` command has been redirected, nothing is printed to the screen.
+
+</details>
+
+<br>
+<br>
+<br>
+
+![shell_script_for_loop_flow_chart](fig/shell_script_for_loop_flow_chart.svg)
+
+## 5.5 Doing a Dry Run
+
+A loop is a way to do many things at once — or to make many mistakes at once if it does the wrong thing. One way to check what a loop would do is to `echo` the commands it would run instead of actually running them.
+
+Suppose we want to preview the commands the following loop will execute without actually running those commands:
+
+~~~
+$ for datafile in *.pdb
+> do
+>   cat $datafile >> all.pdb
+> done
+~~~
+
+What is the difference between the two loops below, and which one would we want to run?
+
+~~~
+# Version 1
+$ for datafile in *.pdb
+> do
+>   echo cat $datafile >> all.pdb
+> done
+~~~
+
+~~~
+# Version 2
+$ for datafile in *.pdb
+> do
+>   echo "cat $datafile >> all.pdb"
+> done
+~~~
+
+<details>
+<summary>Solution</summary>
+
+<strong>The second version is the one we want to run.<\strong> This prints to screen everything enclosed in the quote marks, expanding the loop variable name because we have prefixed it with a dollar sign.
+<br>
+The first version appends the output from the command `echo cat $datafile` to the file, `all.pdb`. This file will just contain the list; `cat cubane.pdb`, `cat ethane.pdb`, `cat methane.pdb` etc.
+<br>
+Try both versions for yourself to see the output! Be sure to open the `all.pdb` file to view its contents.
+
+</details>
+
+## 5.6 Nested Loops
+
+Suppose we want to set up a directory structure to organize some experiments measuring reaction rate constants with different compounds and different temperatures. What would be the result of the following code:
+
+~~~
+$ for species in cubane ethane methane
+> do
+>     for temperature in 25 30 37 40
+>     do
+>         mkdir $species-$temperature
+>     done
+> done
+~~~
+
+<details>
+<summary>Solution</summary>
+
+We have a nested loop, i.e. contained within another loop, so for each species in the outer loop, the inner loop (the nested loop) iterates over the list of temperatures, and creates a new directory for each combination.
+
+Try running the code for yourself to see which directories are created!
+
+</details>
+
+# Episode 6 Shell Scripts
+
+## 6.1 List Unique Species
+
+Leah has several hundred data files, each of which is formatted like this:
+
+~~~
+2013-11-05,deer,5
+2013-11-05,rabbit,22
+2013-11-05,raccoon,7
+2013-11-06,rabbit,19
+2013-11-06,deer,2
+2013-11-06,fox,1
+2013-11-07,rabbit,18
+2013-11-07,bear,1
+~~~
+
+An example of this type of file is given in `data-shell/data/animal-counts/animals.txt`.
+
+We can use the command `cut -d , -f 2 animals.txt | sort | uniq` to produce the unique species in `animals.txt`. In order to avoid having to type out this series of commands every time, a scientist may choose to write a shell script instead.
+
+Write a shell script called `species.sh` that takes any number of filenames as command-line arguments, and uses a variation of the above command to print a list of the unique species appearing in each of those files separately.
+
+<details>
+<summary>Solution</summary>
+	<img src="fig/6.1Sol.PNG">
+</details>
+
+## 6.2 Why Record Commands in the History Before Running Them?
+
+~~~
+$ history | tail -n 5 > recent.sh
+~~~~
+
+If you run the above command the last command in the file is the `history` command itself, i.e., the shell has added `history` to the command log before actually running it. In fact, the shell always adds commands to the log before running them. Why do you think it does this?
+
+<details>
+<summary>Solution</summary>
+	
+If a command causes something to crash or hang, it might be useful to know what that command was, in order to investigate the problem. Were the command only be recorded after running it, we would not have a record of the last command run in the event of a crash
+
+</details>
+
+## 6.3 Variables in Shell Scripts
+
+In the molecules directory, imagine you have a shell script called `script.sh` containing the following commands:
+
+~~~
+head -n $2 $1
+tail -n $3 $1
+~~~
+
+While you are in the `molecules` directory, you type the following command:
+
+~~~
+bash script.sh '*.pdb' 1 1
+~~~
+
+Which of the following outputs would you expect to see?
+
+1. All of the lines between the first and the last lines of each file ending in `.pdb` in the molecules directory
+2. The first and the last line of each file ending in `.pdb` in the `molecules` directory
+3. The first and the last line of each file in the `molecules` directory
+4. An error because of the quotes around `*.pdb`
+
+<details>
+<summary>Solution</summary>
+	
+The correct answer is 2.
+
+The special variables $1, $2 and $3 represent the command line arguments given to the script, such that the commands run are:
+
+~~~
+$ head -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb
+$ tail -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb
+~~~
+
+The shell does not expand `'*.pdb'` because it is enclosed by quote marks. As such, the first argument to the script is `'*.pdb'` which gets expanded within the script by `head` and `tail`.
+
+</details>
+
+## 6.4 Find the Longest File With a Given Extension
+
+Write a shell script called `longest.sh` that takes the name of a directory and a filename extension as its arguments, and prints out the name of the file with the most lines in that directory with that extension. When the script is run as below, it should print the name of the .pdb file in /tmp/data that has the most lines.
+
+~~~
+$ bash longest.sh /tmp/data pdb
+~~~
+
+<details>
+<summary>Solution</summary>
+
+~~~
+# Shell script which takes two arguments:
+#    1. a directory name
+#    2. a file extension
+# and prints the name of the file in that directory
+# with the most lines which matches the file extension.
+
+wc -l $1/*.$2 | sort -n | tail -n 2 | head -n 1
+~~~
+
+The first part of the pipeline, `wc -l $1/*.$2 | sort -n`, counts the lines in each file and sorts them numerically (largest last). When there’s more than one file, `wc` also outputs a final summary line, giving the total number of lines across all files. We use `tail -n 2 | head -n 1` to throw away this last line.
+
+With `wc -l $1/*.$2 | sort -n | tail -n 1` we’ll see the final summary line: we can build our pipeline up in pieces to be sure we understand the output.
+
+</details>
+
+## 6.5 Script Reading Comprehension
+
+For this question, consider the data-shell/molecules directory once again. This contains a number of .pdb files in addition to any other files you may have created. Explain what each of the following three scripts would do when run as bash script1.sh *.pdb, bash script2.sh *.pdb, and bash script3.sh *.pdb respectively.
+
+~~~
+# Script 1
+echo *.*
+~~~
+
+~~~
+# Script 2
+for filename in $1 $2 $3
+do
+    cat $filename
+done
+~~~
+
+~~~
+# Script 3
+echo $@.pdb
+~~~
+
+<details>
+<summary>Solution</summary>
+	
+In each case, the shell expands the wildcard in `*.pdb` before passing the resulting list of file names as arguments to the script.
+
+Script 1 would print out a list of all files containing a dot in their name. The arguments passed to the script are not actually used anywhere in the script.
+
+Script 2 would print the contents of the first 3 files with a `.pdb` file extension. `$1`, `$2`, and `$3` refer to the first, second, and third argument respectively.
+
+Script 3 would print all the arguments to the script (i.e. all the `.pdb` files), followed by `.pdb`. `$@` refers to all the arguments given to a shell script.
+
+~~~
+cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb.pdb
+~~~
+
+</details>
+
+## 6.6 Debugging Scripts
+
+Suppose you have saved the following script in a file called `do-errors.sh` in Nelle’s `north-pacific-gyre/2012-07-03` directory:
+
+~~~
+# Calculate stats for data files.
+for datafile in "$@"
+do
+    echo $datfile
+    bash goostats $datafile stats-$datafile
+done
+~~~
+
+When you run it:
+
+~~~
+$ bash do-errors.sh NENE*[AB].txt
+~~~
+
+the output is blank. To figure out why, re-run the script using the `-x` option:
+
+~~~
+bash -x do-errors.sh NENE*[AB].txt
+~~~
+
+What is the output showing you? Which line is responsible for the error?
+
+<details>
+<summary>Solution</summary>
+	
+The `-x` option causes `bash` to run in debug mode. This prints out each command as it is run, which will help you to locate errors. In this example, we can see that `echo` isn’t printing anything. We have made a typo in the loop variable name, and the variable `datfile` doesn’t exist, hence returning an empty string.
+
+</details>
