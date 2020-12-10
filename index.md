@@ -772,7 +772,7 @@ $ for datafile in *.pdb
 <details>
 <summary>Solution</summary>
 
-<strong>The second version is the one we want to run.<\strong> This prints to screen everything enclosed in the quote marks, expanding the loop variable name because we have prefixed it with a dollar sign.
+<strong>The second version is the one we want to run.</strong> This prints to screen everything enclosed in the quote marks, expanding the loop variable name because we have prefixed it with a dollar sign.
 <br>
 The first version appends the output from the command `echo cat $datafile` to the file, `all.pdb`. This file will just contain the list; `cat cubane.pdb`, `cat ethane.pdb`, `cat methane.pdb` etc.
 <br>
