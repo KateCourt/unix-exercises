@@ -681,7 +681,7 @@ $ for filename in *c*
 <details>
 <summary>Solution</summary>
 
-<strong>4 is the correct answer.<\strong> `*` matches zero or more characters, so a file name with zero or more characters before a letter c and zero or more characters after the letter c will be matched.
+<strong>4 is the correct answer.</strong> `*` matches zero or more characters, so a file name with zero or more characters before a letter c and zero or more characters after the letter c will be matched.
 
 </details>
 
