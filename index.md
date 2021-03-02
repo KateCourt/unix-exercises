@@ -614,6 +614,12 @@ Why do these two loops give different outputs?
 
 ## 5.2.1 Limiting Sets of Files
 
+A reminder of the `data-shell/molecules` directory. `ls` gives the following output:
+
+~~~
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+~~~
+
 What would be the output of running the following loop in the `data-shell/molecules` directory?
 
 ~~~
@@ -637,6 +643,10 @@ $ for filename in c*
 
 ## 5.2.2 Limiting Sets of Files (Part 2)
 
+~~~
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+~~~
+
 How would the output differ from using this command instead?
 
 ~~~
@@ -659,7 +669,11 @@ $ for filename in *c*
 
 </details>
 
+
 ## 5.3 Saving to a File in a Loop - Part One
+~~~
+cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+~~~
 
 In the `data-shell/molecules` directory, what is the effect of this loop?
 
