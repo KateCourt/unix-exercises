@@ -5,14 +5,29 @@ Nelle Nemo, a marine biologist, has just returned from a six-month survey of the
 The bad news is that if she has to run `goostats` by hand using a GUI, she’ll have to select and open a file 1520 times. If `goostats` takes 30 seconds to run each file, the whole process will take more than 12 hours of Nelle’s attention. With the shell, Nelle can instead assign her computer this mundane task while she focuses her attention on writing her paper.
 
 The next few lessons will explore the ways Nelle can achieve this. More specifically, they explain how she can use a command shell to run the `goostats` program, using loops to automate the repetitive steps of entering file names, so that her computer can work while she writes her paper.
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 # Episode 2 Navigating Files and Directories
 
 ![Filesystem](fig/filesystem.svg)
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ![File System 2](fig/home-directories.svg)
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 
@@ -26,12 +41,18 @@ What about if you use both the `-l` and the `-h` option?
 <details>
 <summary>Solution
 </summary>
+
 `-l` - long listing format, showing not only the file/directory names but also additional information such as the file size and the time of its last modification. Some of its output is about properties that we do not cover in this lesson (such as file permissions and ownership), but the rest should be useful nevertheless.   
  
 `-h` + `-l`  - makes file size ‘Human readable’, i.e. `5.3K` instead of `5369`.
 </details>
 
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 ## 2.2 Listing in Reverse Chronological Order
@@ -41,12 +62,18 @@ By default ls lists the contents of a directory in alphabetical order by name. T
 <summary>Solution
 
 </summary>
+
 `-t` - most recently changed file first.    
 
 `-rt` - most recently changed file last.  
 
 This can be very useful for finding your most recent edits or checking to see if a new output file was written.
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 
@@ -88,6 +115,11 @@ Starting from `/Users/amanda/data`, which of the following commands could Amanda
 <br>
 <strong>9. Yes: goes up one level.</strong>
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 2.4 Relative Path Resolution
 If `pwd` displays `/Users/thing`,
@@ -103,6 +135,7 @@ If `pwd` displays `/Users/thing`,
 <details>
 <summary>Solution  
 </summary>
+
 1. No: there *is* a directory `backup` in `/Users`.  
 <br>
 2. No: this is the content of `Users/thing/backup`, but with `..` we asked for one level further up.  
@@ -111,6 +144,11 @@ If `pwd` displays `/Users/thing`,
 <br>
 <strong>4. Yes: `../backup/` refers to `/Users/backup/`.</strong>
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 2.5 `ls` Reading Comprehension
 
@@ -133,18 +171,29 @@ pnas_sub/ pnas_final/ original/
 <details>
 <summary>Solution
 </summary>
+
 1. No: `pwd` is not the name of a directory.
 <br>
 <strong>2. Yes: `ls` without directory argument lists files and directories in the current directory.</strong>
 <br>
 <strong>3. Yes: uses the absolute path explicitly.</strong>
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 # Episode 3 Working with Files and Directories
 
 ![Controls](fig/controls.PNG)
 
-<!--- 
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## 3.1 Creating Files a Different Way
 
 We have seen how to create text files using the `nano` editor.
@@ -165,6 +214,7 @@ When you look at your current directory using the GUI file explorer,
 <details>
 <summary>Solution
 </summary>
+
 1.  The `touch` command generates a new file called `my_file.txt` in
     your current directory.  You
     can observe this newly generated file by typing `ls` at the
@@ -182,7 +232,13 @@ When you look at your current directory using the GUI file explorer,
     efficiently generate a blank text file to be used by such
     programs.
 </details>
---->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## 3.2 Moving Files to a new folder
 
 Jamie realizes that she put the files `sucrose.dat` and `maltose.dat` into the wrong folder. 
@@ -209,9 +265,14 @@ $ mv sucrose.dat maltose.dat ____/____
 <summary>Solution
 </summary>
 
-$ mv sucrose.dat maltose.dat ../raw
+`$ mv sucrose.dat maltose.dat ../raw`
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 3.3 Renaming Files
  Suppose you created a text file called `statstics.txt`
@@ -227,6 +288,7 @@ $ mv sucrose.dat maltose.dat ../raw
 <details>
 <summary>Solution
 </summary>
+
  1. No.  While this would create a file with the correct name, the incorrectly named file still exists in the directory
  and would need to be deleted.
  <br>
@@ -238,6 +300,11 @@ $ mv sucrose.dat maltose.dat ../raw
  4. No, the period(.) indicates where to copy the file, but does not provide a new file name; identical file names
  cannot be created.
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 3.4 Moving and Copying
 
@@ -276,18 +343,30 @@ What is the output of the closing `ls` command in the sequence shown below?
 <details>
 <summary>Solution
 </summary>
- 2. 
+
+ `2.` 
  <br>
+ 
 Starting in the `/Users/jamie/data` directory
 <br>
-  $ mkdir recombined ----> create new folder
-  <br>
-  $ mv proteins.dat recombined/ -----> move proteins.dat to the new folder
-  <br>
-  $ cp recombined/proteins.dat ../proteins-saved.dat -----> copies this file to the parent directory of our current location
-</details>
 
-<!--- 
+`$ mkdir recombined` ----> create new folder    
+` $ mv proteins.dat recombined/` -----> move proteins.dat to the new folder    
+` $ cp recombined/proteins.dat ../proteins-saved.dat `-----> copies this file to the parent directory of our current location    
+
+  
+  <br>
+ 
+  <br>
+ 
+</details>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+ 
 ## 3.5 Using `rm` Safely
 
  What happens when we execute `rm -i thesis_backup/quotations.txt`?
@@ -299,6 +378,11 @@ Starting in the `/Users/jamie/data` directory
 Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all the files removed will disappear forever.
 </details>
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 3.6 Copy with Multiple Filenames
 
@@ -330,13 +414,19 @@ Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all t
 <details>
 <summary>Solution
 </summary>
+
  If given more than one file name followed by a directory name (i.e. the destination directory must
  be the last argument), `cp` copies the files to the named directory.
 
  If given three file names, `cp` throws an error, because it is expecting a directory
  name as the last argument.
 </details>
---->
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## Wildcards
 (Examples from `data-shell/molecules` directory)<br><br>
 
@@ -355,6 +445,11 @@ Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all t
 
 `???ane.pdb` matches three characters followed by `ane.pdb`, giving `cubane.pdb` `ethane.pdb` `octane.pdb`.
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 ## 3.7 List filenames matching a pattern
@@ -373,6 +468,11 @@ In the `molecules` directory which `ls` command(s) will
 </summary>
   3.
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 ## 3.8 Organizing Directories and Files
@@ -394,10 +494,15 @@ $ ls -F
 <details>
 <summary>Solution
 </summary>
- mv *.dat analyzed
+
+` mv *.dat analyzed`
  </details>
- 
-<!---
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ## 3.9 Reproduce a folder structure
 
  You're starting a new experiment, and would like to duplicate the directory
@@ -453,6 +558,7 @@ $ ls -F
 <details>
 <summary>Solution
 </summary>
+
  The first two sets of commands achieve this objective.
  The first set uses relative paths to create the top level directory before
  the subdirectories.
@@ -466,7 +572,12 @@ $ ls -F
  The final set of commands generates the 'raw' and 'processed' directories at the same level
  as the 'data' directory.
 </details>
---->
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 # Episode 4 Pipes and Filters
 
@@ -493,6 +604,11 @@ If we run `sort -n` on the same input, we get this instead:
 `22` 
   
 Why?
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Exercise 4.2
 The `head` command prints lines from the start of a file and the `tail` prints lines from the end of a file instead.
@@ -516,10 +632,21 @@ what would `animals.txt` contain?
 <br>
 <br>
 
-##
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 
 ![Redirects and pipes](fig/redirects-and-pipes.svg)
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 ## Exercise 4.3
 In our current directory, we want to find the 3 files which have the least number of lines. Which command would work?
@@ -532,10 +659,16 @@ In our current directory, we want to find the 3 files which have the least numbe
 <details>
 <summary>Solution
 </summary>
+
 4.        
-The pipe character | is used to connect the output from one command to the input of another. > is used to redirect standard output to a file
+The pipe character `|` is used to connect the output from one command to the input of another. `> `is used to redirect standard output to a file
 </details>
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## Exercise 4.4
 A file called animals.txt looks like this:
@@ -556,14 +689,20 @@ $ cat animals.txt | head -n 5 | tail -n 3 | sort -r > final.txt
 <details>
 <summary>Solution
 </summary>
-2012-11-06,rabbit
+
+`2012-11-06,rabbit`
 <br>
-2012-11-06,deer
+`2012-11-06,deer`
 <br>
-2012-11-05,raccoon
+`2012-11-05,raccoon`
 
 </details>
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 # Episode 5 Loops
@@ -576,6 +715,11 @@ do
     operation_using $thing    # Indentation within the loop is not required, but aids legibility
 done
 ~~~
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 5.1 Variables in Loops
 
@@ -608,9 +752,21 @@ Why do these two loops give different outputs?
 <details>
 <summary>Solution</summary>
 
-<img src="fig/5.1Sol.PNG">
+The first code block gives the same output on each iteration through the loop. Bash expands the wildcard `*.pdb` within the loop body (as well as before the loop starts) to match all files ending in `.pdb` and then lists them using `ls`. The expanded loop would look like this:
+
+~~~
+$ for datafile in cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+> do
+>     ls cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
+> done
+~~~
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 5.2.1 Limiting Sets of Files
 
@@ -637,9 +793,16 @@ $ for filename in c*
 <details>
 <summary>Solution</summary>
 
-<strong>4 is the correct answer.</strong> `*` matches zero or more characters, so any file name starting with the letter c, followed by zero or more other characters will be matched.
+<strong>4 is the correct answer.</strong> 
+
+`*` matches zero or more characters, so any file name starting with the letter c, followed by zero or more other characters will be matched.
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 5.2.2 Limiting Sets of Files (Part 2)
 
@@ -665,10 +828,17 @@ $ for filename in *c*
 <details>
 <summary>Solution</summary>
 
-<strong>4 is the correct answer.</strong> `*` matches zero or more characters, so a file name with zero or more characters before a letter c and zero or more characters after the letter c will be matched.
+<strong>4 is the correct answer.</strong> 
+
+`*` matches zero or more characters, so a file name with zero or more characters before a letter c and zero or more characters after the letter c will be matched.
 
 </details>
 
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 5.3 Saving to a File in a Loop - Part One
 ~~~
@@ -693,9 +863,16 @@ done
 <details>
 <summary>Solution</summary>
 
-<strong>1 is the correct answer.</strong> The text from each file in turn gets written to the `alkanes.pdb` file. However, the file gets overwritten on each loop interaction, so the final content of `alkanes.pdb` is the text from the `propane.pdb` file.
+<strong>1 is the correct answer.</strong> 
+
+The text from each file in turn gets written to the `alkanes.pdb` file. However, the file gets overwritten on each loop interaction, so the final content of `alkanes.pdb` is the text from the `propane.pdb` file.
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 5.4 Saving to a File in a Loop - Part Two
 
@@ -716,7 +893,9 @@ done
 <details>
 <summary>Solution</summary>
 
-<strong>3 is the correct answer.</strong> `>>` appends to a file, rather than overwriting it with the redirected output from a command. Given the output from the `cat` command has been redirected, nothing is printed to the screen.
+<strong>3 is the correct answer.</strong> 
+
+`>>` appends to a file, rather than overwriting it with the redirected output from a command. Given the output from the `cat` command has been redirected, nothing is printed to the screen.
 
 </details>
 
@@ -764,11 +943,18 @@ $ for datafile in *.pdb
 
 <strong>The second version is the one we want to run.</strong> This prints to screen everything enclosed in the quote marks, expanding the loop variable name because we have prefixed it with a dollar sign.
 <br><br>
+
 The first version appends the output from the command `echo cat $datafile` to the file, `all.pdb`. This file will just contain the list; `cat cubane.pdb`, `cat ethane.pdb`, `cat methane.pdb` etc.
 <br>
+
 Try both versions for yourself to see the output! Be sure to open the `all.pdb` file to view its contents.
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 5.6 Nested Loops
 
@@ -792,6 +978,11 @@ We have a nested loop, i.e. contained within another loop, so for each species i
 Try running the code for yourself to see which directories are created!
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 # Episode 6 Shell Scripts
 
@@ -818,8 +1009,27 @@ Write a shell script called `species.sh` that takes any number of filenames as c
 
 <details>
 <summary>Solution</summary>
-	<img src="fig/6.1Sol.PNG">
+	
+~~~
+# Script to find unique species in csv files where species is the second data field
+# This script accepts any number of file names as command line arguments
+    
+# Loop over all files
+for file in $@
+do
+    echo "Unique species in $file:"
+    # Extract species names
+    cut -d , -f 2 $file | sort | uniq
+done
+~~~
+    
 </details>
+
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 6.2 Why Record Commands in the History Before Running Them?
 
@@ -835,6 +1045,11 @@ If you run the above command the last command in the file is the `history` comma
 If a command causes something to crash or hang, it might be useful to know what that command was, in order to investigate the problem. Were the command only be recorded after running it, we would not have a record of the last command run in the event of a crash
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 6.3 Variables in Shell Scripts
 
@@ -863,14 +1078,25 @@ Which of the following outputs would you expect to see?
 	
 <strong>The correct answer is 2.</strong>
 <br><br>
-The special variables $1, $2 and $3 represent the command line arguments given to the script, such that the commands run are:
+
+The special variables `$1`, `$2` and `$3` represent the command line arguments given to the script, such that the commands run are:
 <br>
-<img src="fig/6.3.PNG">
+
+~~~
+$ head -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb
+$ tail -n 1 cubane.pdb ethane.pdb octane.pdb pentane.pdb propane.pdb
+~~~
+
 <br>
 
 The shell does not expand `'*.pdb'` because it is enclosed by quote marks. As such, the first argument to the script is `'*.pdb'` which gets expanded within the script by `head` and `tail`.
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 6.4 Find the Longest File With a Given Extension
 
@@ -883,13 +1109,29 @@ $ bash longest.sh /tmp/data pdb
 <details>
 <summary>Solution</summary>
 
-<img src="fig/6.4.PNG">
+~~~
+# Shell script which takes two arguments:
+#    1. a directory name
+#    2. a file extension
+# and prints the name of the file in that directory
+# with the most lines which matches the file extension.
+
+wc -l $1/*.$2 | sort -n | tail -n 2 | head -n 1
+~~~
+
 <br>
+
 The first part of the pipeline, `wc -l $1/*.$2 | sort -n`, counts the lines in each file and sorts them numerically (largest last). When there’s more than one file, `wc` also outputs a final summary line, giving the total number of lines across all files. We use `tail -n 2 | head -n 1` to throw away this last line.
 <br><br>
+
 With `wc -l $1/*.$2 | sort -n | tail -n 1` we’ll see the final summary line: we can build our pipeline up in pieces to be sure we understand the output.
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 6.5 Script Reading Comprehension
 
@@ -925,10 +1167,15 @@ Script 2 would print the contents of the first 3 files with a `.pdb` file extens
 Script 3 would print all the arguments to the script (i.e. all the `.pdb` files), followed by `.pdb`. `$@` refers to all the arguments given to a shell script.
 
 <br><br>
-cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb.pdb
+`cubane.pdb ethane.pdb methane.pdb octane.pdb pentane.pdb propane.pdb.pdb`
 
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 6.6 Debugging Scripts
 
@@ -963,6 +1210,11 @@ What is the output showing you? Which line is responsible for the error?
 The `-x` option causes `bash` to run in debug mode. This prints out each command as it is run, which will help you to locate errors. In this example, we can see that `echo` isn’t printing anything. We have made a typo in the loop variable name, and the variable `datfile` doesn’t exist, hence returning an empty string.
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 # Episode 7 Finding Things
 
@@ -982,9 +1234,16 @@ and the presence of absence:
 <details>
 <summary>Solution</summary>
 	
-<strong>The correct answer is 3</strong>, because the `-w` option looks only for whole-word matches. The other options will also match ‘of’ when part of another word.
+<strong>The correct answer is 3</strong>, 
+
+because the `-w` option looks only for whole-word matches. The other options will also match ‘of’ when part of another word.
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 7.2 Tracking a Species
 
@@ -1024,15 +1283,21 @@ An example of such a file is provided in `data-shell/data/animal-counts/animals.
 <details>
 <summary>Solution</summary>
 
-grep -w $1 -r $2 | cut -d : -f 2 | cut -d , -f 1,3  > $1.txt
+`grep -w $1 -r $2 | cut -d : -f 2 | cut -d , -f 1,3  > $1.txt`
 
 <br>
 You would call the script above like this:
 <br>
-$ bash count-species.sh bear .
+
+`$ bash count-species.sh bear .`
 
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 7.3 Little Women
 
@@ -1043,15 +1308,42 @@ Hint: one solution might employ the commands `grep` and `wc` and a `|`, while an
 <details>
 <summary>Solution</summary>
 
-<img src="fig/7.3Sol.PNG">
+```python
+for sis in Jo Meg Beth Amy
+do
+    echo $sis:
+    grep -ow $sis LittleWomen.txt | wc -l
+done
+```
+Alternative, slightly inferior solution:
+
+```python
+for sis in Jo Meg Beth Amy
+do
+    echo $sis:
+    grep -ocw $sis LittleWomen.txt
+done
+```
 
 This solution is inferior because `grep -c` only reports the number of lines matched. The total number of matches reported by this method will be lower if there is more than one match per line.
 <br>
+
 Perceptive observers may have noticed that character names sometimes appear in all-uppercase in chapter titles (e.g. ‘MEG GOES TO VANITY FAIR’). If you wanted to count these as well, you could add the `-i` option for case-insensitivity (though in this case, it doesn’t affect the answer to which sister is mentioned most frequently).
 
 </details>
 <br><br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ![find-file-tree](fig/find-file-tree.svg)
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 7.4 Matching and Subtracting
 
@@ -1065,13 +1357,22 @@ The `-v` option to `grep` inverts pattern matching, so that only lines which do 
 <details>
 <summary>Solution</summary>
 	
-<strong>The correct answer is 1.</strong> Putting the match expression in quotes prevents the shell expanding it, so it gets passed to the `find` command.
+<strong>The correct answer is 1.</strong> 
+
+Putting the match expression in quotes prevents the shell expanding it, so it gets passed to the `find` command.
 <br>
+
 Option 2 is incorrect because the shell expands `*s.txt` instead of passing the wildcard expression to `find`.
 <br>
+
 Option 3 is incorrect because it searches the contents of the files for lines which do not match ‘net’, rather than searching the file names.
 
 </details>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 ## 7.5 `find` Pipeline Reading Comprehension
 
