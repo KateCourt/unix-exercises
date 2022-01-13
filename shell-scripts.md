@@ -15,7 +15,7 @@ Leah has several hundred data files, each of which is formatted like this:
 2013-11-07,bear,1
 ~~~
 
-An example of this type of file is given in `data-shell/data/animal-counts/animals.txt`.
+An example of this type of file is given in `shell-lesson-data/data/animal-counts/animals.txt`.
 
 We can use the command `cut -d , -f 2 animals.txt | sort | uniq` to produce the unique species in `animals.txt`. In order to avoid having to type out this series of commands every time, a scientist may choose to write a shell script instead.
 
@@ -121,7 +121,7 @@ With `wc -l $1/*.$2 | sort -n | tail -n 1` we’ll see the final summary line: w
 
 ## 6.5 Script Reading Comprehension
 
-For this question, consider the data-shell/molecules directory once again. This contains a number of .pdb files in addition to any other files you may have created. Explain what each of the following three scripts would do when run as bash script1.sh *.pdb, bash script2.sh *.pdb, and bash script3.sh *.pdb respectively.
+For this question, consider the shell-lesson-data/molecules directory once again. This contains a number of .pdb files in addition to any other files you may have created. Explain what each of the following three scripts would do when run as bash script1.sh *.pdb, bash script2.sh *.pdb, and bash script3.sh *.pdb respectively.
 
 ~~~
 # Script 1

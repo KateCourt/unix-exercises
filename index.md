@@ -129,12 +129,13 @@ If `pwd` displays `/Users/thing`,
 </summary>
 
 1. No: there *is* a directory `backup` in `/Users`.  
-<br>
+
 2. No: this is the content of `Users/thing/backup`, but with `..` we asked for one level further up.  
-<br>
+
 3. No: see previous explanation.  
-<br>
-<strong>4. Yes: `../backup/` refers to `/Users/backup/`.</strong>
+
+4. Yes: `../backup/` refers to `/Users/backup/`.
+
 </details>
 <br>
 <br>
@@ -165,10 +166,10 @@ pnas_sub/ pnas_final/ original/
 </summary>
 
 1. No: `pwd` is not the name of a directory.
-<br>
-<strong>2. Yes: `ls` without directory argument lists files and directories in the current directory.</strong>
-<br>
-<strong>3. Yes: uses the absolute path explicitly.</strong>
+
+2. Yes: `ls` without directory argument lists files and directories in the current directory.
+
+3. Yes: uses the absolute path explicitly.
 </details>
 <br>
 <br>
@@ -344,7 +345,7 @@ Starting in the `/Users/jamie/data` directory
 
 `$ mkdir recombined` ----> create new folder    
 ` $ mv proteins.dat recombined/` -----> move proteins.dat to the new folder    
-` $ cp recombined/proteins.dat ../proteins-saved.dat `-----> copies this file to the parent directory of our current location    
+` $ cp recombined/proteins.dat ../proteins-saved.dat `-----> copies this file to the parent directory of our current location (`jamie`). Notice that `..` is interpreted with respect to the current working directory, not with respect to the location of the file being copied.  
 
   
   <br>
@@ -378,7 +379,7 @@ Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all t
 
 ## 3.6 Copy with Multiple Filenames
 
- For this exercise, you can test the commands in the `data-shell/data` directory.
+ For this exercise, you can test the commands in the `shell-lesson-data/data` directory.
 
  In the example below, what does `cp` do when given several filenames and a directory name?
 
@@ -420,7 +421,7 @@ Prompt before (every) removal. The Unix shell doesn't have a trash bin, so all t
 <br>
 
 ## Wildcards
-(Examples from `data-shell/molecules` directory)<br><br>
+(Examples from `shell-lesson-data/molecules` directory)<br><br>
 
 **`*` matches zero or more characters.**
  
@@ -640,7 +641,7 @@ done
 
 ## 5.1 Variables in Loops
 
-This exercise refers to the `data-shell/molecules` directory. `ls` gives the following output:
+This exercise refers to the `shell-lesson-data/molecules` directory. `ls` gives the following output:
 
 ~~~
 cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
@@ -678,6 +679,8 @@ $ for datafile in cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  
 > done
 ~~~
 
+The second code block lists a different file on each loop iteration. The value of the datafile variable is evaluated using $datafile, and then listed using ls.
+
 </details>
 <br>
 <br>
@@ -687,13 +690,13 @@ $ for datafile in cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  
 
 ## 5.2.1 Limiting Sets of Files
 
-A reminder of the `data-shell/molecules` directory. `ls` gives the following output:
+A reminder of the `shell-lesson-data/molecules` directory. `ls` gives the following output:
 
 ~~~
 cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 ~~~
 
-What would be the output of running the following loop in the `data-shell/molecules` directory?
+What would be the output of running the following loop in the `shell-lesson-data/molecules` directory?
 
 ~~~
 $ for filename in c*
@@ -762,7 +765,7 @@ $ for filename in *c*
 cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
 ~~~
 
-In the `data-shell/molecules` directory, what is the effect of this loop?
+In the `shell-lesson-data/molecules` directory, what is the effect of this loop?
 
 ~~~
 for alkanes in *.pdb
@@ -793,7 +796,7 @@ The text from each file in turn gets written to the `alkanes.pdb` file. However,
 
 ## 5.4 Saving to a File in a Loop - Part Two
 
-Also in the `data-shell/molecules` directory, what would be the output of the following loop?
+Also in the `shell-lesson-data/molecules` directory, what would be the output of the following loop?
 
 ~~~
 for datafile in *.pdb
@@ -918,7 +921,7 @@ Leah has several hundred data files, each of which is formatted like this:
 2013-11-07,bear,1
 ~~~
 
-An example of this type of file is given in `data-shell/data/animal-counts/animals.txt`.
+An example of this type of file is given in `shell-lesson-data/data/animal-counts/animals.txt`.
 
 We can use the command `cut -d , -f 2 animals.txt | sort | uniq` to produce the unique species in `animals.txt`. In order to avoid having to type out this series of commands every time, a scientist may choose to write a shell script instead.
 
@@ -1052,7 +1055,7 @@ With `wc -l $1/*.$2 | sort -n | tail -n 1` we’ll see the final summary line: w
 
 ## 6.5 Script Reading Comprehension
 
-For this question, consider the `data-shell/molecules` directory once again. This contains a number of `.pdb` files in addition to any other files you may have created. Explain what each of the following three scripts would do when run as `bash script1.sh *.pdb`, `bash script2.sh *.pdb`, and `bash script3.sh *.pdb` respectively.
+For this question, consider the `shell-lesson-data/molecules` directory once again. This contains a number of `.pdb` files in addition to any other files you may have created. Explain what each of the following three scripts would do when run as `bash script1.sh *.pdb`, `bash script2.sh *.pdb`, and `bash script3.sh *.pdb` respectively.
 
 ~~~
 # Script 1
@@ -1195,7 +1198,7 @@ cut -d , -f 1,3
 
 Hint: use `man grep` to look for how to grep text recursively in a directory and `man cut` to select more than one field in a line.
 
-An example of such a file is provided in `data-shell/data/animal-counts/animals.txt`
+An example of such a file is provided in `shell-lesson-data/data/animal-counts/animals.txt`
 
 <details>
 <summary>Solution</summary>
@@ -1218,7 +1221,7 @@ You would call the script above like this:
 
 ## 7.3 Little Women
 
-You and your friend, having just finished reading Little Women by Louisa May Alcott, are in an argument. Of the four sisters in the book, Jo, Meg, Beth, and Amy, your friend thinks that Jo was the most mentioned. You, however, are certain it was Amy. Luckily, you have a file `LittleWomen.txt` containing the full text of the novel (`data-shell/writing/data/LittleWomen.txt`). Using a `for` loop, how would you tabulate the number of times each of the four sisters is mentioned?
+You and your friend, having just finished reading Little Women by Louisa May Alcott, are in an argument. Of the four sisters in the book, Jo, Meg, Beth, and Amy, your friend thinks that Jo was the most mentioned. You, however, are certain it was Amy. Luckily, you have a file `LittleWomen.txt` containing the full text of the novel (`shell-lesson-data/writing/data/LittleWomen.txt`). Using a `for` loop, how would you tabulate the number of times each of the four sisters is mentioned?
 
 Hint: one solution might employ the commands `grep` and `wc` and a `|`, while another might utilize `grep` options. There is often more than one way to solve a programming task, so a particular solution is usually chosen based on a combination of yielding the correct result, elegance, readability, and speed.
 
@@ -1264,7 +1267,7 @@ Perceptive observers may have noticed that character names sometimes appear in a
 
 ## 7.4 Matching and Subtracting
 
-The `-v` option to `grep` inverts pattern matching, so that only lines which do not match the pattern are printed. Given that, which of the following commands will find all files in `/data` whose names end in `s.txt` but whose names also do not contain the string `net`? (For example, `animals.txt` or `amino-acids.txt` but not `planets.txt`.) Once you have thought about your answer, you can test the commands in the `data-shell` directory.
+The `-v` option to `grep` inverts pattern matching, so that only lines which do not match the pattern are printed. Given that, which of the following commands will find all files in `/data` whose names end in `s.txt` but whose names also do not contain the string `net`? (For example, `animals.txt` or `amino-acids.txt` but not `planets.txt`.) Once you have thought about your answer, you can test the commands in the `shell-lesson-data` directory.
 
 1. `find data -name "*s.txt" | grep -v net`
 2. `find data -name *s.txt | grep -v net`

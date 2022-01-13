@@ -13,7 +13,7 @@ done
 
 ## 5.1 Variables in Loops
 
-This exercise refers to the `data-shell/molecules` directory. `ls` gives the following output:
+This exercise refers to the `shell-lesson-data/molecules` directory. `ls` gives the following output:
 
 ~~~
 cubane.pdb  ethane.pdb  methane.pdb  octane.pdb  pentane.pdb  propane.pdb
@@ -75,7 +75,7 @@ propane.pdb
 
 ## 5.2.1 Limiting Sets of Files
 
-What would be the output of running the following loop in the `data-shell/molecules` directory?
+What would be the output of running the following loop in the `shell-lesson-data/molecules` directory?
 
 ~~~
 $ for filename in c*
@@ -122,7 +122,7 @@ $ for filename in *c*
 
 ## 5.3 Saving to a File in a Loop - Part One
 
-In the `data-shell/molecules` directory, what is the effect of this loop?
+In the `shell-lesson-data/molecules` directory, what is the effect of this loop?
 
 ~~~
 for alkanes in *.pdb
@@ -146,7 +146,7 @@ done
 
 ## 5.4 Saving to a File in a Loop - Part Two
 
-Also in the `data-shell/molecules` directory, what would be the output of the following loop?
+Also in the `shell-lesson-data/molecules` directory, what would be the output of the following loop?
 
 ~~~
 for datafile in *.pdb
