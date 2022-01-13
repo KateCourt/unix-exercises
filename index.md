@@ -96,24 +96,16 @@ Starting from `/Users/amanda/data`, which of the following commands could Amanda
 <summary>Solution
 </summary>
 
-
-1. No: `.` stands for the current directory.
-<br>
-2. No: `/` stands for the root directory.
-<br>
-3. No: Amanda's home directory is `/Users/amanda`.
-<br>
-4. No: this goes up two levels, i.e. ends in `/Users`.
-<br>
-<strong>5. Yes: `~` stands for the user's home directory, in this case `/Users/amanda`.</strong>
-<br>
+1. No: `.` stands for the current directory.   
+2. No: `/` stands for the root directory.   
+3. No: Amanda's home directory is `/Users/amanda`.   
+4. No: this goes up two levels, i.e. ends in `/Users`.   
+5. Yes: `~` stands for the user's home directory, in this case `/Users/amanda`.   
 6. No: this would navigate into a directory `home` in the current directory if it exists.
-<br>
-<strong>7. Yes: unnecessarily complicated, but correct.</strong>
-<br>
-<strong>8. Yes: shortcut to go back to the user's home directory.</strong>
-<br>
-<strong>9. Yes: goes up one level.</strong>
+7. Yes: unnecessarily complicated, but correct.
+8. Yes: shortcut to go back to the user's home directory.  
+9. Yes: goes up one level.
+
 </details>
 <br>
 <br>
@@ -497,81 +489,6 @@ $ ls -F
 
 ` mv *.dat analyzed`
  </details>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-## 3.9 Reproduce a folder structure
-
- You're starting a new experiment, and would like to duplicate the directory
- structure from your previous experiment so you can add new data.
-
- Assume that the previous experiment is in a folder called '2016-05-18',
- which contains a `data` folder that in turn contains folders named `raw` and
- `processed` that contain data files.  The goal is to copy the folder structure
- of the `2016-05-18-data` folder into a folder called `2016-05-20`
- so that your final directory structure looks like this:
-
-	2016-05-20/
-	└── data
-	    ├── processed
-	    └── raw
-
- Which of the following set of commands would achieve this objective?
- What would the other commands do?
-
- ~~~
- $ mkdir 2016-05-20
- $ mkdir 2016-05-20/data
- $ mkdir 2016-05-20/data/processed
- $ mkdir 2016-05-20/data/raw
- ~~~
-
- ~~~
- $ mkdir 2016-05-20
- $ cd 2016-05-20
- $ mkdir data
- $ cd data
- $ mkdir raw processed
- ~~~
-
- ~~~
- $ mkdir 2016-05-20/data/raw
- $ mkdir 2016-05-20/data/processed
- ~~~
-
- ~~~
- $ mkdir -p 2016-05-20/data/raw
- $ mkdir -p 2016-05-20/data/processed
- ~~~
-
- ~~~
- $ mkdir 2016-05-20
- $ cd 2016-05-20
- $ mkdir data
- $ mkdir raw processed
- ~~~
-
-
-<details>
-<summary>Solution
-</summary>
-
- The first two sets of commands achieve this objective.
- The first set uses relative paths to create the top level directory before
- the subdirectories.
-
- The third set of commands will give an error because the default behavior of `mkdir` won't create a subdirectory
- of a non-existant directory: the intermediate level folders must be created first.
-
- The fourth set of commands achieve this objective. Remember, the `-p` option, followed by a path of one or more 
- directories, will cause `mkdir` to create any intermediate subdirectories as required.
-
- The final set of commands generates the 'raw' and 'processed' directories at the same level
- as the 'data' directory.
-</details>
 <br>
 <br>
 <br>
